@@ -19,6 +19,7 @@ interface CourseState {
   selectedCourseIds: string[];
   selectCourse: (courseId: string) => void;
   unselectCourse: (courseId: string) => void;
+  resetSelectedCourse: () => void;
 }
 
 const defaultCourses: Course[] = [
@@ -87,4 +88,6 @@ export const useCourseStore = create<CourseState>()((set) => ({
         return { ...state };
       }
     }),
+  resetSelectedCourse: () =>
+    set((state) => ({ ...state, selectedCourseIds: [] })),
 }));

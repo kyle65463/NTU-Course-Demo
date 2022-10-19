@@ -11,12 +11,28 @@ const SelectedCourseList = () => {
     return selectedCourseIds.map((id) => courseIdsMap[id] ?? emptyCourse);
   }, [selectedCourseIds, courses]);
   const unselectCourse = useCourseStore((state) => state.unselectCourse);
+  const resetSelectedCourse = useCourseStore(
+    (state) => state.resetSelectedCourse
+  );
   return (
-    <section className="ml-16 w-[25rem]">
+    <section className="ml-16 w-[26rem]">
       <h2 className="mb-3 w-full text-center text-xl font-medium">
         Courses I Plan to Take
       </h2>
-      <div className="flex h-[614px] w-[25rem] flex-col items-center rounded-md bg-green-200 py-8">
+      <div className="flex h-[614px] flex-col items-center rounded-md bg-green-200 py-4 px-4">
+        {/* Action buttons */}
+        {selectedCourses.length > 0 && (
+          <div className="mb-4 flex w-full justify-end">
+            <button className="mr-4 text-sm" onClick={resetSelectedCourse}>
+              Reset
+            </button>
+            <button className="rounded-md bg-white py-1.5 px-3 text-sm">
+              Done
+            </button>
+          </div>
+        )}
+
+        {/* Selected Course */}
         {selectedCourses.map((course, index) => (
           <SelectedCourseCard
             key={course.id}
