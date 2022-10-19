@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto flex min-h-screen items-center justify-center p-4">
+      <main className="container mx-auto flex min-h-screen justify-center p-4 pt-[6%]">
         <CourseInfoList />
         <SelectedCourseList />
       </main>

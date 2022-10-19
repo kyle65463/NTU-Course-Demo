@@ -18,7 +18,7 @@ const CourseInfoCard = ({
       onClick={onClick}
       className={clsx(
         [isSelected && "bg-gray-200"],
-        "mb-[-2px] border-2 border-gray-600 p-4"
+        "mb-[-2px] w-[25rem] border-2 border-gray-600 p-4"
       )}
     >
       <div className="mb-1 flex justify-between">

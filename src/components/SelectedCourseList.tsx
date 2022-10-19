@@ -9,13 +9,15 @@ const SelectedCourseList = () => {
     [selectedCourseIds, courses]
   );
   return (
-    <section>
-      <h2 className="mb-2 w-full text-center text-xl">
+    <section className="ml-16 w-[25rem]">
+      <h2 className="mb-3 w-full text-center text-xl font-medium">
         Courses I Plan to Take
       </h2>
-      {selectedCourses.map((course) => (
-        <div key={course.id} />
-      ))}
+      <div className="h-[614px] w-[25rem] rounded-md bg-green-200">
+        {selectedCourses.map((course) => (
+          <div key={course.id} />
+        ))}
+      </div>
     </section>
   );
 };
