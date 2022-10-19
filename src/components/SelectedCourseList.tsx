@@ -16,7 +16,7 @@ const SelectedCourseList = () => {
   );
   const confirmSelection = useCourseStore((state) => state.confirmSelection);
   return (
-    <section className="ml-16 w-[26rem]">
+    <section className="ml-16 w-[27rem]">
       <h2 className="mb-3 w-full text-center text-xl font-medium">
         Courses I Plan to Take
       </h2>

@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto flex min-h-screen flex-col justify-center p-4">
+      <main className="flex min-h-screen w-full flex-col items-center justify-center p-4">
         <div className="flex justify-center">
           <CourseInfoList />
           <SelectedCourseList />

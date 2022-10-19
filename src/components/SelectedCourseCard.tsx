@@ -74,15 +74,15 @@ const SelectedCourseCard = ({
       className={clsx(
         [isDragging && "opacity-0"],
         "flex items-center",
-        "mb-[-2px] w-[24rem] px-2.5 py-3",
+        "mb-[-2px] w-[25rem] px-2.5 py-3",
         "border-2 border-gray-600 bg-white"
       )}
     >
       <div ref={drag}>
-        <HiMenuAlt4 className="mr-2 cursor-pointer text-gray-500 hover:text-gray-400" />
+        <HiMenuAlt4 className="cursor-pointer text-gray-500 hover:text-gray-400" />
       </div>
       <div className="flex flex-1">
-        <span className="mr-4 h-6 w-6 rounded bg-gray-200 text-center">
+        <span className="mx-4 h-6 w-6 rounded bg-gray-200 text-center">
           {priority}
         </span>
         <h3>{title}</h3>

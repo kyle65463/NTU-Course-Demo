@@ -6,7 +6,7 @@ const CourseInfoList = () => {
   const selectedCourseIds = useCourseStore((state) => state.selectedCourseIds);
   const selectCourse = useCourseStore((state) => state.selectCourse);
   return (
-    <section className="h-[40rem] w-[26rem]">
+    <section className="w-[27rem]">
       <h2 className="mb-3 w-full text-center text-xl font-medium">
         Course Information
       </h2>

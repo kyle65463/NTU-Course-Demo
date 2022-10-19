@@ -7,7 +7,7 @@ import { trpc } from "../utils/trpc";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <DndProvider backend={HTML5Backend}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </DndProvider>
   );
 };
