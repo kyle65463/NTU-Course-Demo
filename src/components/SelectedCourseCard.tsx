@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useRef } from "react";
 import { useDrag, useDrop, XYCoord } from "react-dnd";
 import { BsFillTrashFill } from "react-icons/bs";
+import { HiMenuAlt4 } from "react-icons/hi";
 import { Course, useCourseStore } from "../stores/course";
 
 interface SelectedCourseCardProps {
@@ -18,7 +19,7 @@ const SelectedCourseCard = ({
   const ref = useRef<HTMLDivElement>(null);
   const reorderPriority = useCourseStore((state) => state.reorderPriority);
 
-  const [{ isDragging }, drag] = useDrag({
+  const [{ isDragging }, drag, dragPreview] = useDrag({
     type: "SelectedCourseCard",
     item: () => {
       return { index: priority - 1 };
@@ -65,7 +66,7 @@ const SelectedCourseCard = ({
     },
   });
 
-  drag(drop(ref));
+  dragPreview(drop(ref));
 
   return (
     <article
@@ -77,6 +78,9 @@ const SelectedCourseCard = ({
         "border-2 border-gray-600 bg-white"
       )}
     >
+      <div ref={drag}>
+        <HiMenuAlt4 className="mr-2 cursor-pointer text-gray-500 hover:text-gray-400" />
+      </div>
       <div className="flex flex-1">
         <span className="mr-4 h-6 w-6 rounded bg-gray-200 text-center">
           {priority}
