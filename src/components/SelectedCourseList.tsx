@@ -14,6 +14,7 @@ const SelectedCourseList = () => {
   const resetSelectedCourse = useCourseStore(
     (state) => state.resetSelectedCourse
   );
+  const confirmSelection = useCourseStore((state) => state.confirmSelection);
   return (
     <section className="ml-16 w-[26rem]">
       <h2 className="mb-3 w-full text-center text-xl font-medium">
@@ -26,7 +27,10 @@ const SelectedCourseList = () => {
             <button className="mr-4 text-sm" onClick={resetSelectedCourse}>
               Reset
             </button>
-            <button className="rounded-md bg-white py-1.5 px-3 text-sm">
+            <button
+              className="rounded-md bg-white py-1.5 px-3 text-sm"
+              onClick={confirmSelection}
+            >
               Done
             </button>
           </div>

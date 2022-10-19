@@ -17,9 +17,11 @@ export const emptyCourse: Course = {
 interface CourseState {
   courses: Course[];
   selectedCourseIds: string[];
+  resultCourseIds: string[];
   selectCourse: (courseId: string) => void;
   unselectCourse: (courseId: string) => void;
   resetSelectedCourse: () => void;
+  confirmSelection: () => void;
 }
 
 const defaultCourses: Course[] = [
@@ -64,6 +66,7 @@ const defaultCourses: Course[] = [
 export const useCourseStore = create<CourseState>()((set) => ({
   courses: defaultCourses,
   selectedCourseIds: [],
+  resultCourseIds: [],
   selectCourse: (courseId) =>
     set((state) => {
       if (state.selectedCourseIds.includes(courseId)) {
@@ -90,4 +93,9 @@ export const useCourseStore = create<CourseState>()((set) => ({
     }),
   resetSelectedCourse: () =>
     set((state) => ({ ...state, selectedCourseIds: [] })),
+  confirmSelection: () =>
+    set((state) => ({
+      ...state,
+      resultCourseIds: state.selectedCourseIds,
+    })),
 }));
