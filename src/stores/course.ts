@@ -11,6 +11,7 @@ interface CourseState {
   courses: Course[];
   selectedCourseIds: string[];
   selectCourse: (courseId: string) => void;
+  unselectCourse: (courseId: string) => void;
 }
 
 const defaultCourses: Course[] = [
@@ -58,9 +59,25 @@ export const useCourseStore = create<CourseState>()((set) => ({
   selectCourse: (courseId) =>
     set((state) => {
       if (state.selectedCourseIds.includes(courseId)) {
-        // The course has been already selected
+        // The course has been already selected, ignore the action
+        return { ...state };
+      } else {
+        // The course has not been selected, add the course to the list
+        return { selectedCourseIds: [...state.selectedCourseIds, courseId] };
+      }
+    }),
+  unselectCourse: (courseId) =>
+    set((state) => {
+      if (state.selectedCourseIds.includes(courseId)) {
+        // The course has been already selected, unselect it
+        return {
+          selectedCourseIds: state.selectedCourseIds.filter(
+            (id) => id !== courseId
+          ),
+        };
+      } else {
+        // The course has not been selected, ignore the action
         return { ...state };
       }
-      return { selectedCourseIds: [...state.selectedCourseIds, courseId] };
     }),
 }));

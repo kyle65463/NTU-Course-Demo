@@ -18,6 +18,7 @@ const CourseInfoCard = ({
       onClick={onClick}
       className={clsx(
         [isSelected && "bg-gray-200"],
+        [!isSelected && "cursor-pointer"],
         "mb-[-2px] w-[25rem] border-2 border-gray-600 p-4"
       )}
     >

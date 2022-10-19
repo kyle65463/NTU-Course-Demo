@@ -9,6 +9,7 @@ const SelectedCourseList = () => {
     () => courses.filter((course) => selectedCourseIds.includes(course.id)),
     [selectedCourseIds, courses]
   );
+  const unselectCourse = useCourseStore((state) => state.unselectCourse);
   return (
     <section className="ml-16 w-[25rem]">
       <h2 className="mb-3 w-full text-center text-xl font-medium">
@@ -20,6 +21,7 @@ const SelectedCourseList = () => {
             key={course.id}
             course={course}
             priority={index + 1}
+            onDelete={() => unselectCourse(course.id)}
           />
         ))}
       </div>
