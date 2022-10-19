@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import CourseInfoList from "../components/CourseInfoList";
+import SelectedCourseList from "../components/SelectedCourseList";
 
 const Home: NextPage = () => {
   return (
@@ -10,8 +11,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
+      <main className="container mx-auto flex min-h-screen items-center justify-center p-4">
         <CourseInfoList />
+        <SelectedCourseList />
       </main>
     </>
   );
