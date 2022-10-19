@@ -10,13 +10,13 @@ const ResultCourseList = () => {
     return resultCourseIds.map((id) => courseIdsMap[id] ?? emptyCourse);
   }, [resultCourseIds, courses]);
   return (
-    <section className="mt-8 flex items-center justify-center">
+    <section className="mt-8 flex flex-wrap items-center justify-center">
       <span className="mr-1.5 font-medium">
         {resultCourseIds.length > 0 ? "Result:" : "No Result"}
       </span>
       {resultCourses.map((course) => (
         <span
-          className="mr-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-sm text-gray-900"
+          className="mr-1.5 mb-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-sm text-gray-900"
           key={course.id}
         >
           {course.title}

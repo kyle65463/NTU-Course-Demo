@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       <main
         className={clsx(
           "flex flex-col items-center justify-center",
-          "min-h-screen p-8 lg:p-4"
+          "min-h-screen p-10 lg:p-4"
         )}
       >
         <div
