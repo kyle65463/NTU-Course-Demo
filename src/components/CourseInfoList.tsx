@@ -7,6 +7,7 @@ const CourseInfoList = () => {
   const selectCourse = useCourseStore((state) => state.selectCourse);
   return (
     <section>
+      <h2 className="mb-2 w-full text-center text-xl">Course Information</h2>
       {courses.map((course) => (
         <CourseInfoCard
           key={course.id}
