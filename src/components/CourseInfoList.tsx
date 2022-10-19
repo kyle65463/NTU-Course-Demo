@@ -7,7 +7,7 @@ const CourseInfoList = () => {
   const selectedCourseIds = useCourseStore((state) => state.selectedCourseIds);
   const selectCourse = useCourseStore((state) => state.selectCourse);
   return (
-    <section className={clsx("w-[20rem] lg:w-[27rem]")}>
+    <section className={clsx("w-[20rem] sm:w-[27rem]")}>
       <h2 className="mb-3 w-full text-center text-xl font-medium">
         Course Information
       </h2>

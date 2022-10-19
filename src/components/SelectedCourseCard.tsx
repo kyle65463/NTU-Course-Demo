@@ -74,7 +74,7 @@ const SelectedCourseCard = ({
       className={clsx(
         [isDragging && "opacity-0"],
         "flex items-center",
-        "mb-[-2px] w-[18rem] px-2.5 py-3 lg:w-[25rem]",
+        "mb-[-2px] w-[18rem] px-2.5 py-3 sm:w-[25rem]",
         "border-2 border-gray-600 bg-white"
       )}
     >
