@@ -8,9 +8,12 @@ const CourseInfoList = () => {
   const selectCourse = useCourseStore((state) => state.selectCourse);
   return (
     <section className={clsx("w-[20rem] sm:w-[27rem]")}>
+      {/* Title */}
       <h2 className="mb-3 w-full text-center text-xl font-medium">
         Course Information
       </h2>
+
+      {/* Course info cards */}
       <div>
         {courses.map((course) => (
           <CourseInfoCard

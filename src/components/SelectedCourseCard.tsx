@@ -78,13 +78,20 @@ const SelectedCourseCard = ({
         "border-2 border-gray-600 bg-white"
       )}
     >
+      {/* Reorder button */}
       <div ref={drag}>
         <HiMenuAlt4 className="cursor-pointer text-gray-500 hover:text-gray-400" />
       </div>
+
+      {/* Priority */}
       <span className="mx-2 h-6 w-6 rounded bg-gray-200 text-center lg:mx-4">
         {priority}
       </span>
+
+      {/* Course title */}
       <h3 className="mr-2 flex-1">{title}</h3>
+
+      {/* Delete button */}
       <BsFillTrashFill
         className="cursor-pointer text-gray-500 hover:text-gray-400"
         onClick={onDelete}

@@ -11,9 +11,12 @@ const ResultCourseList = () => {
   }, [resultCourseIds, courses]);
   return (
     <section className="mt-8 flex flex-wrap items-center justify-center">
+      {/* No result hint */}
       <span className="mr-1.5 font-medium">
         {resultCourseIds.length > 0 ? "Result:" : "No Result"}
       </span>
+
+      {/* Result course titles  */}
       {resultCourses.map((course) => (
         <span
           className="mr-1.5 mb-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-sm text-gray-900"
