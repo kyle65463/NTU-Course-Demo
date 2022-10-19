@@ -43,7 +43,7 @@ const CourseInfoList = () => {
   return (
     <section>
       {courseData.map((course) => (
-        <CourseInfoCard key={course.curriculumNumber} course={course} />
+        <CourseInfoCard key={course.curriculumNumber} course={course} isSelected />
       ))}
     </section>
   );
