@@ -1,11 +1,5 @@
 import clsx from "clsx";
-
-interface Course {
-  title: string;
-  credits: number;
-  instructor: string;
-  curriculumNumber: string;
-}
+import { Course } from "../stores/course";
 
 interface CourseInfoCardProps {
   course: Course;
@@ -13,7 +7,7 @@ interface CourseInfoCardProps {
 }
 
 const CourseInfoCard = ({ course, isSelected }: CourseInfoCardProps) => {
-  const { title, credits, instructor, curriculumNumber } = course;
+  const { title, credits, instructor, id: curriculumNumber } = course;
   return (
     <article
       className={clsx(
