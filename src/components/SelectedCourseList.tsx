@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useCourseStore } from "../stores/course";
+import SelectedCourseCard from "./SelectedCourseCard";
 
 const SelectedCourseList = () => {
   const courses = useCourseStore((state) => state.courses);
@@ -13,9 +14,13 @@ const SelectedCourseList = () => {
       <h2 className="mb-3 w-full text-center text-xl font-medium">
         Courses I Plan to Take
       </h2>
-      <div className="h-[614px] w-[25rem] rounded-md bg-green-200">
-        {selectedCourses.map((course) => (
-          <div key={course.id} />
+      <div className="flex h-[614px] w-[25rem] flex-col items-center rounded-md bg-green-200 py-8">
+        {selectedCourses.map((course, index) => (
+          <SelectedCourseCard
+            key={course.id}
+            course={course}
+            priority={index + 1}
+          />
         ))}
       </div>
     </section>
