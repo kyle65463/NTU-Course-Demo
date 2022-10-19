@@ -1,14 +1,15 @@
 import { useMemo } from "react";
-import { useCourseStore } from "../stores/course";
+import { Course, emptyCourse, useCourseStore } from "../stores/course";
 import SelectedCourseCard from "./SelectedCourseCard";
 
 const SelectedCourseList = () => {
   const courses = useCourseStore((state) => state.courses);
   const selectedCourseIds = useCourseStore((state) => state.selectedCourseIds);
-  const selectedCourses = useMemo(
-    () => courses.filter((course) => selectedCourseIds.includes(course.id)),
-    [selectedCourseIds, courses]
-  );
+  const selectedCourses = useMemo(() => {
+    const courseIdsMap: { [key: string]: Course } = {};
+    courses.forEach((course) => (courseIdsMap[course.id] = course));
+    return selectedCourseIds.map((id) => courseIdsMap[id] ?? emptyCourse);
+  }, [selectedCourseIds, courses]);
   const unselectCourse = useCourseStore((state) => state.unselectCourse);
   return (
     <section className="ml-16 w-[25rem]">

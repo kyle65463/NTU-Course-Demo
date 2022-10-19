@@ -7,6 +7,13 @@ export interface Course {
   id: string;
 }
 
+export const emptyCourse: Course = {
+  title: "",
+  credits: 0,
+  instructor: "",
+  id: "",
+};
+
 interface CourseState {
   courses: Course[];
   selectedCourseIds: string[];
