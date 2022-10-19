@@ -4,12 +4,18 @@ import { Course } from "../stores/course";
 interface CourseInfoCardProps {
   course: Course;
   isSelected: boolean;
+  onClick: () => void;
 }
 
-const CourseInfoCard = ({ course, isSelected }: CourseInfoCardProps) => {
+const CourseInfoCard = ({
+  course,
+  isSelected,
+  onClick,
+}: CourseInfoCardProps) => {
   const { title, credits, instructor, id: curriculumNumber } = course;
   return (
     <article
+      onClick={onClick}
       className={clsx(
         [isSelected && "bg-gray-200"],
         "mb-[-2px] border-2 border-gray-600 p-4"
