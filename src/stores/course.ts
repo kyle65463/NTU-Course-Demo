@@ -22,6 +22,7 @@ interface CourseState {
   unselectCourse: (courseId: string) => void;
   resetSelectedCourse: () => void;
   confirmSelection: () => void;
+  reorderPriority: (oldIndex: number, newIndex: number) => void; // 0-indexed
 }
 
 const defaultCourses: Course[] = [
@@ -98,4 +99,13 @@ export const useCourseStore = create<CourseState>()((set) => ({
       ...state,
       resultCourseIds: state.selectedCourseIds,
     })),
+  reorderPriority: (oldIndex, newIndex) =>
+    set((state) => {
+      const result = [...state.selectedCourseIds];
+      // const newIndex = priority - 1; // Priority is 1-indexed
+      // const oldIndex = state.selectedCourseIds.indexOf(oldIndex);
+      result.splice(newIndex, 0, result.splice(oldIndex, 1)[0] ?? "");
+      console.log(newIndex, oldIndex);
+      return { ...state, selectedCourseIds: result };
+    }),
 }));
