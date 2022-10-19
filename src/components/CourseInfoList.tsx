@@ -1,3 +1,5 @@
+import CourseInfoCard from "./CourseInfoCard";
+
 const courseData = [
   {
     title: "CALCULUS",
@@ -40,10 +42,8 @@ const courseData = [
 const CourseInfoList = () => {
   return (
     <section>
-      {courseData.map(({ title, curriculumNumber }) => (
-        <div key={curriculumNumber}>
-          <h3>{title}</h3>
-        </div>
+      {courseData.map((course) => (
+        <CourseInfoCard key={course.curriculumNumber} course={course} />
       ))}
     </section>
   );
