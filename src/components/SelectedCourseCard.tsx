@@ -1,6 +1,8 @@
 import clsx from "clsx";
+import { useRef } from "react";
+import { useDrag, useDrop, XYCoord } from "react-dnd";
 import { BsFillTrashFill } from "react-icons/bs";
-import { Course } from "../stores/course";
+import { Course, useCourseStore } from "../stores/course";
 
 interface SelectedCourseCardProps {
   priority: number;
@@ -13,10 +15,64 @@ const SelectedCourseCard = ({
   course: { title },
   onDelete,
 }: SelectedCourseCardProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const reorderPriority = useCourseStore((state) => state.reorderPriority);
+
+  const [{ isDragging }, drag] = useDrag({
+    type: "SelectedCourseCard",
+    item: () => {
+      return { index: priority - 1 };
+    },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  const [, drop] = useDrop<{ index: number }, void>({
+    accept: "SelectedCourseCard",
+    hover(item, monitor) {
+      if (!ref.current) return;
+      const dragIndex = item.index; // The index of the dragging item
+      const hoverIndex = priority - 1; // The index of the hovering item
+
+      // Don't replace items with themselves
+      if (dragIndex === hoverIndex) return;
+
+      // Determine rectangle on screen
+      const hoverBoundingRect = ref.current.getBoundingClientRect();
+
+      // Get vertical middle position of the item
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+      // Get mouse position
+      const mousePositionY =
+        (monitor.getClientOffset() as XYCoord).y - hoverBoundingRect.top;
+
+      // Dragging downwards
+      if (dragIndex < hoverIndex && mousePositionY < hoverMiddleY - 20) {
+        return;
+      }
+
+      // Dragging upwards
+      if (dragIndex > hoverIndex && mousePositionY > hoverMiddleY + 20) {
+        return;
+      }
+
+      // Reorder items
+      reorderPriority(dragIndex, hoverIndex);
+      item.index = hoverIndex;
+    },
+  });
+
+  drag(drop(ref));
+
   return (
     <article
+      ref={ref}
       className={clsx(
-        "flex items-center ",
+        [isDragging && "opacity-0"],
+        "flex items-center",
         "mb-[-2px] w-[24rem] px-2.5 py-3",
         "border-2 border-gray-600 bg-white"
       )}
