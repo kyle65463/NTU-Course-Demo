@@ -15,15 +15,34 @@ export const emptyCourse: Course = {
 };
 
 interface CourseState {
+  // Data of all available courses
   courses: Course[];
+
+  // Ids of courses that are selected by the user
   selectedCourseIds: string[];
+
+  // Ids of the result courses after confirming selection
   resultCourseIds: string[];
+
+  // Set available courses data
   setCourseList: (courses: Course[]) => void;
+
+  // Add a course id to selectedCourseIds
   selectCourse: (courseId: string) => void;
+
+  // Remove a course id from selectedCourseIds
   unselectCourse: (courseId: string) => void;
+
+  // Reset selectedCourseIds
   resetSelectedCourse: () => void;
+
+  // Copy selectedCourseIds to resultCourseIds
   confirmSelection: () => void;
-  reorderPriority: (oldIndex: number, newIndex: number) => void; // 0-indexed
+
+  // Reorder a current selecting course from a index to another
+  // e.g. [1, 2, 3, 4] => [3, 1, 2, 4] (moving from index 2 to index 0)
+  // Note: 0-indexed
+  reorderPriority: (oldIndex: number, newIndex: number) => void;
 }
 
 export const useCourseStore = create<CourseState>()((set) => ({
@@ -65,10 +84,7 @@ export const useCourseStore = create<CourseState>()((set) => ({
   reorderPriority: (oldIndex, newIndex) =>
     set((state) => {
       const result = [...state.selectedCourseIds];
-      // const newIndex = priority - 1; // Priority is 1-indexed
-      // const oldIndex = state.selectedCourseIds.indexOf(oldIndex);
       result.splice(newIndex, 0, result.splice(oldIndex, 1)[0] ?? "");
-      console.log(newIndex, oldIndex);
       return { ...state, selectedCourseIds: result };
     }),
 }));
