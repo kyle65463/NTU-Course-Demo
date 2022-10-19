@@ -11,11 +11,9 @@ import { useCourseStore } from "../stores/course";
 const Home: NextPage = () => {
   const setCourseList = useCourseStore((state) => state.setCourseList);
 
+  // Fetch available courses data
   const { isLoading } = useQuery(["courses"], fetchCourses, {
-    onSuccess: (courses) => {
-      console.log(courses);
-      setCourseList(courses);
-    },
+    onSuccess: setCourseList,
   });
 
   return (
