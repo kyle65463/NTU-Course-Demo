@@ -23,8 +23,8 @@ const CourseInfoCard = ({
       )}
     >
       <div className="mb-1 flex justify-between">
-        <h3>{title}</h3>
-        <span className="text-sm text-gray-600">{credits} Credits</span>
+        <h3 className="flex-1">{title}</h3>
+        <span className="text-sm text-gray-800">{credits} Credits</span>
       </div>
       <h4 className="text-sm text-gray-600">{instructor}</h4>
       <h4 className="text-sm text-gray-600">{curriculumNumber}</h4>
