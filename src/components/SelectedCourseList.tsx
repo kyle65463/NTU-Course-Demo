@@ -19,7 +19,7 @@ const SelectedCourseList = () => {
       <h2 className="mb-3 w-full text-center text-xl font-medium">
         Courses I Plan to Take
       </h2>
-      <div className="flex h-[614px] flex-col items-center rounded-md bg-green-200 py-4 px-4">
+      <div className="flex h-[614px] flex-col items-center rounded-md bg-green-200 p-4">
         {/* Action buttons */}
         {selectedCourses.length > 0 && (
           <div className="mb-4 flex w-full justify-end">
@@ -30,6 +30,13 @@ const SelectedCourseList = () => {
               Done
             </button>
           </div>
+        )}
+
+        {/* No selected course hint */}
+        {selectedCourses.length <= 0 && (
+          <h3 className="flex h-full flex-col justify-center text-xl">
+            No selected course
+          </h3>
         )}
 
         {/* Selected Course */}
